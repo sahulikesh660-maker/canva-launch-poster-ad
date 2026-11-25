@@ -1,0 +1,45 @@
+name: Capture real Canva screens
+
+on:
+  workflow_dispatch:
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Capture public Canva pages
+        run: |
+          set -e
+          mkdir -p /tmp/caps assets/ui
+          for spec in "home|https://www.canva.com/|Homepage-of-Canva" "templates|https://www.canva.com/templates/|Canva-Templates" "features|https://www.canva.com/features/|Canva-Features"; do
+            IFS='|' read -r name url label <<< "$spec"
+            echo "::group::Capturing $name"
+            npx --yes hyperframes@0.9.88 capture "$url" -o "/tmp/caps/$name" --json --skip-vision --max-screenshots 8 --timeout 60000 --capture-budget 120000 || echo "capture failed for $name"
+            echo "::endgroup::"
+          done
+          find /tmp/caps -maxdepth 3 -type f -name '*.png' | sort | head -60
+      - name: Collect UI plates
+        run: |
+          mkdir -p assets/ui
+          for name in home templates features; do
+            if [ -f "/tmp/caps/$name/screenshots/full-page.png" ]; then
+              cp "/tmp/caps/$name/screenshots/full-page.png" "assets/ui/$name-full.png"
+            fi
+            i=0
+            for f in /tmp/caps/$name/screenshots/scroll-*.png; do
+              [ -e "$f" ] || continue
+              cp "$f" "assets/ui/$name-scroll-$i.png"
+              i=$((i+1))
+              [ "$i" -ge 6 ] && break
+            done
+          done
+          ls -la assets/ui
+      - uses: actions/upload-artifact@v4
+        with:
+          name: canva-ui
+          path: assets/ui
+          if-no-files-found: warn
