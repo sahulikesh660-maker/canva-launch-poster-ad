@@ -1,0 +1,44 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; background: #F5F3F7; font-family: "Outfit", sans-serif; }
+    .stage { position: absolute; inset: 0; background: #F5F3F7; }
+    .workspace { position: absolute; left: 80px; top: 250px; width: 920px; height: 1280px; background: #FFFFFF; border: 1px solid #E6E3EA; border-radius: 24px; overflow: hidden; box-shadow: 0 18px 34px rgba(17,16,24,0.14); }
+    .workspace img { width: 920px; height: 1280px; object-fit: cover; object-position: 50% 30%; opacity: 0.9; }
+    .poster { position: absolute; left: 140px; top: 300px; width: 800px; height: 1120px; background: #111018; overflow: hidden; box-shadow: 0 24px 60px rgba(17,16,24,0.32); }
+    .poster-photo { width: 800px; height: 1120px; object-fit: cover; object-position: 50% 45%; }
+    .scrim { position: absolute; inset: 0; background: rgba(10,8,14,0.58); }
+    .poster-headline { position: absolute; left: 56px; top: 300px; width: 690px; color: #FFFFFF; font-size: 124px; font-weight: 800; line-height: 0.92; letter-spacing: -0.045em; }
+    .poster-sub { position: absolute; left: 56px; top: 720px; width: 690px; color: #FFFFFF; font-size: 46px; font-weight: 700; letter-spacing: 0.02em; }
+    .poster-meta { position: absolute; left: 56px; top: 800px; width: 690px; color: rgba(255,255,255,0.84); font-size: 30px; font-weight: 600; letter-spacing: 0.14em; }
+    .credit { position: absolute; left: 56px; top: 900px; width: 690px; color: rgba(255,255,255,0.7); font-size: 28px; font-weight: 500; letter-spacing: 0.02em; }
+    .accent { color: #C9A6FF; }
+  </style>
+  <div id="root" data-composition-id="payoff" data-width="1080" data-height="1920">
+    <div class="stage" data-layout-ignore></div>
+    <div id="pay-workspace" class="clip workspace" data-start="11.6" data-duration="3.4" data-track-index="0"><div id="pay-workspace-inner"><img src="assets/ui/features-full.jpg" alt="Canva workspace" /></div></div>
+    <div id="pay-poster" class="clip poster" data-start="0" data-duration="15" data-track-index="1">
+      <div id="pay-poster-inner">
+        <img class="poster-photo" src="assets/ui/night-market.jpg" alt="Night market photograph by Daniel Case" />
+        <div class="scrim" data-layout-ignore></div>
+        <div id="pay-headline" class="poster-headline">MIDNIGHT<br />MARKET</div>
+        <div id="pay-sub" class="poster-sub">LAUNCH <span class="accent">TOMORROW</span></div>
+        <div id="pay-meta" class="poster-meta">SAT · 10 AM · DOWNTOWN</div>
+        <div id="pay-credit" class="credit">Photo: Daniel Case / CC BY-SA 3.0</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#pay-poster-inner", { opacity: 0, scale: 0.96, filter: "blur(8px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.55, ease: "power4.out" }, 0);
+    tl.fromTo("#pay-headline", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 0.7, ease: "power4.out" }, 0.9);
+    tl.fromTo("#pay-sub", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 0.55, ease: "power4.out" }, 1.9);
+    tl.fromTo("#pay-meta", { opacity: 0, y: 14 }, { opacity: 0.84, y: 0, duration: 0.4, ease: "power4.out" }, 2.7);
+    tl.fromTo("#pay-credit", { opacity: 0 }, { opacity: 0.62, duration: 0.3, ease: "power2.out" }, 3.2);
+    tl.to("#pay-poster-inner", { scale: 1.06, duration: 0.7, ease: "power2.inOut" }, 9.4);
+    tl.to("#pay-poster-inner", { scale: 1, duration: 0.5, ease: "power2.inOut" }, 10.1);
+    tl.fromTo("#pay-workspace-inner", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out" }, 11.6);
+    tl.to("#pay-poster-inner", { scale: 0.64, x: -10, y: 40, duration: 0.8, ease: "power3.inOut" }, 11.8);
+    window.__timelines["payoff"] = tl;
+  </script>
+</template>

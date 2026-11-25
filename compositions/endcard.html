@@ -1,0 +1,29 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; background: #FFFFFF; font-family: "Outfit", sans-serif; }
+    .stage { position: absolute; inset: 0; background: #FFFFFF; }
+    .lockup { position: absolute; left: 120px; top: 780px; width: 840px; display: flex; align-items: center; gap: 26px; }
+    .mark { width: 124px; height: 124px; border-radius: 28px; }
+    .wordmark { width: 300px; height: 101px; border-radius: 10px; object-fit: cover; }
+    .cta { position: absolute; left: 370px; top: 1010px; width: 340px; height: 88px; background: #7D2AE8; border-radius: 12px; color: #FFFFFF; font-size: 34px; font-weight: 700; display: flex; align-items: center; justify-content: center; letter-spacing: -0.01em; }
+    .url { position: absolute; left: 120px; top: 1140px; width: 840px; text-align: center; color: #6B6675; font-size: 30px; font-weight: 600; letter-spacing: 0.04em; }
+  </style>
+  <div id="root" data-composition-id="endcard" data-width="1080" data-height="1920">
+    <div class="stage" data-layout-ignore></div>
+    <div id="end-lockup" class="clip lockup" data-start="0" data-duration="6" data-track-index="0">
+      <span id="end-mark-wrap"><img id="end-mark" class="mark" src="assets/brand/canva-mark-512.png" alt="Canva" /></span>
+      <span id="end-word-wrap"><img id="end-word" class="wordmark" src="assets/brand/canva-wordmark-960.png" alt="Canva wordmark" /></span>
+    </div>
+    <div id="end-cta" class="clip cta" data-start="2" data-duration="4" data-track-index="1"><span id="end-cta-inner" data-var-text="cta">Try Canva free</span></div>
+    <div id="end-url" class="clip url" data-start="2.3" data-duration="3.7" data-track-index="1"><span id="end-url-inner">canva.com</span></div>
+  </div>
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#end-mark", { opacity: 0, y: -60, scale: 0.8 }, { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(1.4)" }, 0.2);
+    tl.fromTo("#end-word-wrap", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 0.55, ease: "power4.out" }, 0.8);
+    tl.fromTo("#end-cta-inner", { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.28, ease: "back.out(1.4)" }, 2.0);
+    tl.fromTo("#end-url-inner", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.25, ease: "power4.out" }, 2.3);
+    window.__timelines["endcard"] = tl;
+  </script>
+</template>

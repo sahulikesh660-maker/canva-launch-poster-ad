@@ -1,0 +1,45 @@
+name: Render Canva promo
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [master]
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install ffmpeg
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg
+      - name: Check
+        run: |
+          mkdir -p out
+          npx --yes hyperframes@0.9.88 check --json > out/check.json 2> out/check.err || true
+          tail -40 out/check.err || true
+      - name: Render
+        run: |
+          npx --yes hyperframes@0.9.88 render --quality delivery -o out/canva-launch-poster.mp4
+      - name: Verify and extract QA frames
+        run: |
+          ffprobe -v error -show_entries format=duration,size:stream=width,height,r_frame_rate,codec_name -of json out/canva-launch-poster.mp4 | tee out/ffprobe.json
+          mkdir -p out/frames
+          for t in 0 3 9 16 20 27 34 42 49 56 61 66 73 79 86 89; do
+            ffmpeg -y -v error -ss "$t" -i out/canva-launch-poster.mp4 -frames:v 1 -vf scale=540:-2 "out/frames/f$(printf '%03d' "$t").png"
+          done
+          ls -la out/frames | head -25
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: canva-promo-render
+          path: |
+            out/canva-launch-poster.mp4
+            out/frames
+            out/check.json
+            out/check.err
+            out/ffprobe.json
+          if-no-files-found: warn
