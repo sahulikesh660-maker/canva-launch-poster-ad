@@ -48,6 +48,7 @@
     tl.fromTo("#hook-phone", { y: 26, scale: 1.025 }, { y: 0, scale: 1, duration: 2.4, ease: "power3.out" }, 0);
     tl.fromTo("#hook-meta-inner", { opacity: 0, x: -18 }, { opacity: 0.72, x: 0, duration: 0.35, ease: "power4.out" }, 0.15);
     tl.fromTo("#hook-bubble-inner", { scale: 0.985 }, { scale: 1, duration: 0.4, ease: "back.out(1.2)" }, 0.3);
+    tl.to("#hook-phone", { y: -16, duration: 3.2, ease: "sine.inOut" }, 2.6);
     tl.to("#hook-phone", { opacity: 0, scale: 0.95, duration: 0.5, ease: "power3.in" }, 6.55);
     tl.to("#hook-meta-inner", { opacity: 0, duration: 0.35, ease: "power3.in" }, 6.55);
     window.__timelines["hook"] = tl;

@@ -31,4 +31,5 @@ verifies it with `ffprobe`, and uploads the MP4 plus decoded QA frames as artifa
 - Real page plates: captured from public Canva pages.
 - Music: SoundHelix Song 1 (free example track, https://www.soundhelix.com/) — trimmed to 90 s,
   faded and loudness-matched. Swap for a licensed track for commercial use.
-- SFX: HyperFrames bundled library / Openverse, CC BY; see `.media/audio/sfx/CREDITS.md`.
+- SFX: HyperFrames bundled library / Openverse, CC BY; see `.media/audio/sfx/CREDITS.md`. The UI click is a short generated transient (the bundled click file began with ~0.9 s of silence).
+- Film: 90.000 s verified by `ffprobe`, 1080×1920, 30 fps, H.264/AAC, ≈ -22 LUFS integrated.
