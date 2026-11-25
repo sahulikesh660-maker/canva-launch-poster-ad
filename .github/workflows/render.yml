@@ -28,16 +28,18 @@ jobs:
         run: |
           ffprobe -v error -show_entries format=duration,size:stream=width,height,r_frame_rate,codec_name -of json out/canva-launch-poster.mp4 | tee out/ffprobe.json
           mkdir -p out/frames
-          for t in 0 3 9 16 20 27 34 42 49 56 61 66 73 79 86 89; do
+          for t in 0 2 5 8 12 16 19 22 26 31 36 39 43 47 51 54 58 61 64 69 73 78 81 85 89; do
             ffmpeg -y -v error -ss "$t" -i out/canva-launch-poster.mp4 -frames:v 1 -vf scale=540:-2 "out/frames/f$(printf '%03d' "$t").png"
           done
-          ls -la out/frames | head -25
+          ffmpeg -y -v error -ss 68 -i out/canva-launch-poster.mp4 -frames:v 1 -vf scale=540:-2 -q:v 3 out/canva-promo-thumb.jpg
+          ls -la out/frames | head -35
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: canva-promo-render
           path: |
             out/canva-launch-poster.mp4
+            out/canva-promo-thumb.jpg
             out/frames
             out/check.json
             out/check.err

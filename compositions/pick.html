@@ -3,49 +3,97 @@
     #root { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; background: #FFFFFF; font-family: "Outfit", sans-serif; }
     .stage { position: absolute; inset: 0; background: #FFFFFF; }
     .rule { position: absolute; left: 120px; right: 120px; top: 280px; height: 1px; background: #E6E3EA; }
-    .title { position: absolute; left: 120px; top: 306px; width: 840px; color: #111018; font-size: 80px; font-weight: 800; line-height: 1.06; letter-spacing: -0.035em; }
+    .title { position: absolute; left: 120px; top: 306px; width: 840px; color: #111018; font-size: 84px; font-weight: 800; line-height: 1.04; letter-spacing: -0.035em; }
     .accent { color: #7D2AE8; }
-    .card { position: absolute; left: 120px; top: 486px; width: 840px; height: 724px; background: #FFFFFF; border: 1px solid #E6E3EA; border-radius: 20px; overflow: hidden; box-shadow: 0 18px 34px rgba(17,16,24,0.18); }
-    .bar { height: 56px; background: #F5F3F7; border-bottom: 1px solid #E6E3EA; display: flex; align-items: center; padding: 0 22px; gap: 10px; }
+    .card { position: absolute; left: 80px; top: 500px; width: 920px; height: 1140px; background: #FFFFFF; border: 1px solid #E6E3EA; border-radius: 24px; overflow: hidden; box-shadow: 0 24px 60px rgba(17,16,24,0.16); }
+    .bar { height: 60px; background: #F5F3F7; border-bottom: 1px solid #E6E3EA; display: flex; align-items: center; padding: 0 24px; gap: 10px; }
     .dot { width: 12px; height: 12px; border-radius: 6px; background: #CBC7D2; }
     .url { margin-left: 20px; color: #6B6675; font-size: 24px; font-weight: 600; }
-    .plate-wrap { position: absolute; left: 0; top: 56px; width: 840px; height: 668px; overflow: hidden; }
-    .plate { width: 840px; height: 1000px; object-fit: cover; object-position: 50% 0%; }
-    .selectring { position: absolute; left: 34px; top: 212px; width: 300px; height: 196px; border: 5px solid #7D2AE8; border-radius: 6px; box-shadow: 0 0 0 2px rgba(255,255,255,0.9) inset; }
-    .cursor { position: absolute; left: 0; top: 0; width: 64px; height: 64px; z-index: 6; filter: drop-shadow(0 2px 3px rgba(0,0,0,0.3)); }
-    .sub { position: absolute; left: 120px; top: 412px; width: 840px; color: #6B6675; font-size: 30px; font-weight: 600; }
+    .plate-wrap { position: absolute; left: 0; top: 60px; width: 920px; height: 1080px; overflow: hidden; background: #F5F3F7; }
+    #pick-scroll { position: absolute; left: -140px; top: -98px; width: 1200px; }
+    .plate { width: 1200px; height: auto; display: block; }
+    .hover { position: absolute; left: 46px; top: 731px; width: 141px; height: 141px; border: 4px solid #7D2AE8; border-radius: 6px; box-shadow: 0 0 0 2px rgba(255,255,255,0.94) inset; opacity: 0; }
+    .cursor { position: absolute; left: 0; top: 0; width: 64px; height: 64px; z-index: 8; opacity: 0; filter: drop-shadow(0 2px 3px rgba(0,0,0,0.3)); }
+    .scrim { position: absolute; inset: 0; background: rgba(17,16,24,0.52); opacity: 0; }
+    .sheet { position: absolute; left: 40px; top: 40px; width: 840px; height: 1000px; background: #FFFFFF; border-radius: 20px; box-shadow: 0 26px 60px rgba(10,8,14,0.34); padding: 34px; display: flex; gap: 34px; opacity: 0; }
+    .preview { position: relative; width: 340px; height: 476px; flex: none; background: #111018; border-radius: 8px; overflow: hidden; }
+    .preview img { width: 340px; height: 476px; object-fit: cover; object-position: 50% 44%; }
+    .preview .scrim2 { position: absolute; inset: 0; background: rgba(10,8,14,0.6); }
+    .preview-type { position: absolute; left: 24px; top: 108px; width: 292px; color: #FFFFFF; font-size: 50px; font-weight: 800; line-height: 0.94; letter-spacing: -0.045em; }
+    .preview-sub { position: absolute; left: 24px; top: 300px; width: 292px; color: #FFFFFF; font-size: 18px; font-weight: 700; letter-spacing: 0.02em; }
+    .preview-meta { position: absolute; left: 24px; top: 330px; width: 292px; color: rgba(255,255,255,0.8); font-size: 13px; font-weight: 600; letter-spacing: 0.14em; }
+    .preview-credit { position: absolute; left: 24px; top: 426px; width: 292px; color: rgba(255,255,255,0.62); font-size: 11px; font-weight: 500; }
+    .lav { color: #C9A6FF; }
+    .info { position: relative; flex: 1; padding-top: 8px; }
+    .kicker { color: #7D2AE8; font-size: 21px; font-weight: 800; letter-spacing: 0.18em; }
+    .sheet-title { margin-top: 14px; color: #111018; font-size: 46px; font-weight: 800; letter-spacing: -0.035em; line-height: 1.02; }
+    .sheet-meta { margin-top: 12px; color: #6B6675; font-size: 24px; font-weight: 600; }
+    .free { display: inline-block; margin-top: 20px; padding: 8px 18px; background: #F1E6FF; color: #5A16B4; border-radius: 8px; font-size: 22px; font-weight: 700; }
+    .sheet-rule { height: 1px; background: #E6E3EA; margin: 28px 0 24px; }
+    .desc { color: #4C4756; font-size: 25px; font-weight: 500; line-height: 1.42; width: 384px; }
+    .btn { margin-top: 32px; height: 76px; background: #7D2AE8; border-radius: 10px; color: #FFFFFF; font-size: 28px; font-weight: 700; display: flex; align-items: center; justify-content: center; letter-spacing: -0.01em; }
+    .btn2 { margin-top: 14px; height: 68px; border: 1px solid #D8D5DE; border-radius: 10px; color: #111018; font-size: 26px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+    .close { position: absolute; right: 24px; top: 18px; color: #8B8694; font-size: 38px; font-weight: 500; line-height: 1; }
   </style>
   <div id="root" data-composition-id="pick" data-width="1080" data-height="1920">
     <div class="stage" data-layout-ignore></div>
     <div class="rule" data-layout-ignore></div>
-    <div id="pick-title-a" class="clip title" data-start="0" data-duration="3.5" data-track-index="0"><span id="pick-title-a-inner">Start with a<br /><span class="accent">template.</span></span></div>
-    <div id="pick-title-b" class="clip title" data-start="9.2" data-duration="3.8" data-track-index="0"><span id="pick-title-b-inner">Then make it yours.</span></div>
-    <div id="pick-card" class="clip card" data-start="0" data-duration="13" data-track-index="1">
+    <div id="pick-title-a" class="clip title" data-start="0" data-duration="8.3" data-track-index="0"><span id="pick-title-a-inner">Start with a<br /><span class="accent">template.</span></span></div>
+    <div id="pick-title-b" class="clip title" data-start="8.4" data-duration="4.044" data-track-index="0"><span id="pick-title-b-inner">Then make it yours.</span></div>
+    <div id="pick-card" class="clip card" data-start="0" data-duration="12.444" data-track-index="1">
       <div id="pick-card-inner">
         <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="url">canva.com/templates</span></div>
         <div class="plate-wrap">
           <div id="pick-scroll"><img class="plate" src="assets/ui/templates-full.jpg" alt="Canva template gallery" /></div>
-          <div id="pick-selected" class="selectring" data-layout-ignore></div>
+          <div id="pick-hover" class="hover" data-layout-ignore></div>
           <svg id="pick-cursor" class="cursor" viewBox="0 0 64 64" aria-hidden="true"><path d="M8 4 L8 50 L21 37 L30 57 L39 53 L30 34 L48 34 Z" fill="#FFFFFF" stroke="#111018" stroke-width="3" stroke-linejoin="round" /></svg>
+          <div id="pick-scrim" class="scrim" data-layout-ignore></div>
+          <div id="pick-sheet" class="sheet" data-layout-ignore>
+            <div class="preview">
+              <img src="assets/ui/night-market.jpg" alt="Night market photo by Daniel Case" />
+              <div class="scrim2"></div>
+              <div class="preview-type">MIDNIGHT<br />MARKET</div>
+              <div class="preview-sub">LAUNCH <span class="lav">TOMORROW</span></div>
+              <div class="preview-meta">SAT · 10 AM · DOWNTOWN</div>
+              <div class="preview-credit">Photo: Daniel Case / CC BY-SA 3.0</div>
+            </div>
+            <div class="info">
+              <div class="kicker">TEMPLATE</div>
+              <div class="sheet-title">Midnight Market</div>
+              <div class="sheet-meta">Poster · 1080 × 1350 px</div>
+              <div class="free">Free</div>
+              <div class="sheet-rule"></div>
+              <div class="desc">A bold photo poster for late-night events. Swap the photo, keep the type.</div>
+              <div class="btn">Customize this template</div>
+              <div class="btn2">Share</div>
+              <div class="close">×</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <div id="pick-sub" class="clip sub" data-start="9.4" data-duration="3.5" data-track-index="0"><span id="pick-sub-inner">Real templates, ready to edit.</span></div>
   </div>
   <script>
     window.__timelines = window.__timelines || {};
     const tl = gsap.timeline({ paused: true });
     tl.fromTo("#pick-card-inner", { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.45, ease: "expo.out" }, 0);
     tl.fromTo("#pick-title-a-inner", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.22, ease: "power4.out" }, 0.1);
-    tl.to("#pick-title-a-inner", { opacity: 0, filter: "blur(6px)", duration: 0.2, ease: "power3.in" }, 3.3);
-    tl.fromTo("#pick-cursor", { x: 700, y: 620, opacity: 0 }, { x: 700, y: 620, opacity: 1, duration: 0.25, ease: "power4.out" }, 0.6);
-    tl.fromTo("#pick-scroll", { y: 0 }, { y: -260, duration: 5.4, ease: "power2.inOut" }, 1.6);
-    tl.to("#pick-cursor", { x: 360, y: 330, duration: 0.7, ease: "power2.inOut" }, 7.3);
-    tl.to("#pick-cursor", { scale: 0.86, duration: 0.12, ease: "back.out(1.4)" }, 8.1);
-    tl.fromTo("#pick-selected", { opacity: 0, scale: 0.9, transformOrigin: "center center" }, { opacity: 1, scale: 1, duration: 0.18, ease: "power4.out" }, 8.15);
-    tl.fromTo("#pick-title-b-inner", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.22, ease: "power4.out" }, 9.2);
-    tl.fromTo("#pick-sub-inner", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.3, ease: "power4.out" }, 9.5);
-    tl.to("#pick-card-inner", { scale: 1.04, filter: "blur(5px)", duration: 0.5, ease: "power3.in" }, 12.2);
+    tl.fromTo("#pick-cursor", { x: 600, y: 640, opacity: 0 }, { x: 600, y: 640, opacity: 1, duration: 0.25, ease: "power4.out" }, 0.8);
+    tl.to("#pick-cursor", { x: 720, y: 500, duration: 0.8, ease: "power2.inOut" }, 2.0);
+    tl.to("#pick-cursor", { x: 350, y: 760, duration: 0.9, ease: "power2.inOut" }, 4.4);
+    tl.fromTo("#pick-scroll", { y: 0 }, { y: -200, duration: 4.8, ease: "power2.inOut" }, 1.6);
+    tl.to("#pick-cursor", { x: 116, y: 801, duration: 0.9, ease: "power2.inOut" }, 6.6);
+    tl.to("#pick-title-a-inner", { opacity: 0, filter: "blur(6px)", duration: 0.2, ease: "power3.in" }, 8.0);
+    tl.fromTo("#pick-hover", { opacity: 0, scale: 0.96 }, { opacity: 1, scale: 1, duration: 0.16, ease: "power4.out" }, 7.05);
+    tl.to("#pick-cursor", { scale: 0.86, duration: 0.08, yoyo: true, repeat: 1, ease: "power2.out" }, 7.2);
+    tl.to("#pick-hover", { opacity: 0, duration: 0.15, ease: "power2.out" }, 7.45);
+    tl.fromTo("#pick-scrim", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, 7.35);
+    tl.fromTo("#pick-sheet", { opacity: 0, scale: 0.96, transformOrigin: "50% 50%" }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(1.2)" }, 7.45);
+    tl.fromTo("#pick-title-b-inner", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.22, ease: "power4.out" }, 8.4);
+    tl.to("#pick-cursor", { opacity: 0, duration: 0.2, ease: "power3.in" }, 7.7);
+    tl.to("#pick-title-b-inner", { opacity: 0, filter: "blur(6px)", duration: 0.2, ease: "power3.in" }, 11.3);
+    tl.to("#pick-sheet", { scale: 1.05, opacity: 0, duration: 0.5, ease: "power3.in" }, 11.7);
+    tl.to("#pick-scrim", { opacity: 0, duration: 0.3, ease: "power3.in" }, 11.7);
     window.__timelines["pick"] = tl;
   </script>
 </template>

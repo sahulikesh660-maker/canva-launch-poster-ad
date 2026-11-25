@@ -4,26 +4,29 @@
     .stage { position: absolute; inset: 0; background: #FFFFFF; }
     .flood { position: absolute; inset: 0; background: #FFB35C; }
     .rule { position: absolute; left: 120px; right: 120px; top: 280px; height: 1px; background: #E6E3EA; }
-    .title { position: absolute; left: 120px; top: 306px; width: 840px; color: #111018; font-size: 80px; font-weight: 800; line-height: 1.06; letter-spacing: -0.035em; }
+    .title { position: absolute; left: 120px; top: 306px; width: 840px; color: #111018; font-size: 84px; font-weight: 800; line-height: 1.04; letter-spacing: -0.035em; }
     .accent { color: #7D2AE8; }
-    .card { position: absolute; left: 120px; top: 486px; width: 840px; height: 724px; background: #FFFFFF; border: 1px solid #E6E3EA; border-radius: 20px; overflow: hidden; box-shadow: 0 18px 34px rgba(17,16,24,0.18); }
-    .bar { height: 56px; background: #F5F3F7; border-bottom: 1px solid #E6E3EA; display: flex; align-items: center; padding: 0 22px; gap: 10px; }
+    .card { position: absolute; left: 80px; top: 500px; width: 920px; height: 1140px; background: #FFFFFF; border: 1px solid #E6E3EA; border-radius: 24px; overflow: hidden; box-shadow: 0 24px 60px rgba(17,16,24,0.16); }
+    .bar { height: 60px; background: #F5F3F7; border-bottom: 1px solid #E6E3EA; display: flex; align-items: center; padding: 0 24px; gap: 10px; }
     .dot { width: 12px; height: 12px; border-radius: 6px; background: #CBC7D2; }
     .url { margin-left: 20px; color: #6B6675; font-size: 24px; font-weight: 600; letter-spacing: 0.02em; }
-    .plate-wrap { position: absolute; left: 0; top: 56px; width: 840px; height: 668px; overflow: hidden; }
-    .plate { width: 840px; height: 668px; object-fit: cover; object-position: 50% 0%; }
-    .cursor { position: absolute; left: 0; top: 0; width: 64px; height: 64px; z-index: 5; filter: drop-shadow(0 2px 3px rgba(0,0,0,0.3)); }
+    .plate-wrap { position: absolute; left: 0; top: 60px; width: 920px; height: 1080px; overflow: hidden; background: #F5F3F7; }
+    #rev-plate-motion { position: absolute; left: 0; top: -75px; width: 920px; }
+    .plate { width: 920px; height: auto; display: block; }
+    .ripple { position: absolute; left: 420px; top: 146px; width: 80px; height: 80px; border: 3px solid #7D2AE8; border-radius: 50%; opacity: 0; }
+    .cursor { position: absolute; left: 0; top: 0; width: 64px; height: 64px; z-index: 5; opacity: 0; filter: drop-shadow(0 2px 3px rgba(0,0,0,0.3)); }
   </style>
   <div id="root" data-composition-id="reveal" data-width="1080" data-height="1920">
     <div class="stage" data-layout-ignore></div>
     <div id="rev-flood" class="clip flood" data-start="0" data-duration="0.6" data-track-index="0"></div>
     <div class="rule" data-layout-ignore></div>
-    <div id="rev-title" class="clip title" data-start="1.1" data-duration="4.4" data-track-index="0"><span id="rev-title-inner">One idea.<br /><span class="accent">One place.</span></span></div>
-    <div id="rev-card" class="clip card" data-start="0" data-duration="8" data-track-index="1">
+    <div id="rev-title" class="clip title" data-start="1.0" data-duration="4.6" data-track-index="0"><span id="rev-title-inner">One idea.<br /><span class="accent">One place.</span></span></div>
+    <div id="rev-card" class="clip card" data-start="0" data-duration="7.111" data-track-index="1">
       <div id="rev-card-inner">
         <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="url">canva.com</span></div>
         <div class="plate-wrap">
           <div id="rev-plate-motion"><img class="plate" src="assets/ui/home-full.jpg" alt="Canva homepage" /></div>
+          <div id="rev-ripple" class="ripple"></div>
           <svg id="rev-cursor" class="cursor" viewBox="0 0 64 64" aria-hidden="true"><path d="M8 4 L8 50 L21 37 L30 57 L39 53 L30 34 L48 34 Z" fill="#FFFFFF" stroke="#111018" stroke-width="3" stroke-linejoin="round" /></svg>
         </div>
       </div>
@@ -34,12 +37,13 @@
     const tl = gsap.timeline({ paused: true });
     tl.fromTo("#rev-flood", { opacity: 1 }, { opacity: 0, duration: 0.45, ease: "power2.inOut" }, 0);
     tl.fromTo("#rev-card-inner", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, ease: "expo.out" }, 0.15);
-    tl.fromTo("#rev-title-inner", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.22, ease: "power4.out" }, 1.1);
-    tl.fromTo("#rev-cursor", { x: 720, y: 600, opacity: 0 }, { x: 720, y: 600, opacity: 1, duration: 0.25, ease: "power4.out" }, 4.2);
-    tl.to("#rev-cursor", { x: 450, y: 300, duration: 0.6, ease: "power2.inOut" }, 4.5);
-    tl.to("#rev-cursor", { scale: 0.86, duration: 0.12, ease: "back.out(1.4)" }, 5.1);
-    tl.fromTo("#rev-plate-motion", { scale: 1, filter: "blur(0px)" }, { scale: 1.12, filter: "blur(6px)", duration: 0.5, ease: "power3.in" }, 5.6);
-    tl.to("#rev-title-inner", { opacity: 0, filter: "blur(6px)", duration: 0.2, ease: "power3.in" }, 5.6);
+    tl.fromTo("#rev-title-inner", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.22, ease: "power4.out" }, 1.0);
+    tl.fromTo("#rev-cursor", { x: 650, y: 700, opacity: 0 }, { x: 650, y: 700, opacity: 1, duration: 0.25, ease: "power4.out" }, 3.2);
+    tl.to("#rev-cursor", { x: 460, y: 186, duration: 0.7, ease: "power2.inOut" }, 3.6);
+    tl.to("#rev-cursor", { scale: 0.86, duration: 0.08, yoyo: true, repeat: 1, ease: "power2.out" }, 4.55);
+    tl.fromTo("#rev-ripple", { scale: 0.3, opacity: 0.9 }, { scale: 1.9, opacity: 0, duration: 0.5, ease: "power2.out" }, 4.55);
+    tl.fromTo("#rev-plate-motion", { scale: 1, filter: "blur(0px)" }, { scale: 1.16, filter: "blur(6px)", transformOrigin: "50% 18%", duration: 0.55, ease: "power3.in" }, 5.5);
+    tl.to("#rev-title-inner", { opacity: 0, filter: "blur(6px)", duration: 0.2, ease: "power3.in" }, 5.5);
     window.__timelines["reveal"] = tl;
   </script>
 </template>

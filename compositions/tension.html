@@ -2,15 +2,15 @@
   <style>
     #root { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; background: #14121A; font-family: "Outfit", sans-serif; }
     .stage { position: absolute; inset: 0; background: #14121A; }
-    .lightpanel { position: absolute; right: -140px; top: 380px; width: 520px; height: 700px; background: rgba(255,179,92,0.10); }
+    .lightpanel { position: absolute; right: -140px; top: 420px; width: 520px; height: 760px; background: rgba(255,179,92,0.10); }
     .rule { position: absolute; left: 120px; right: 120px; top: 280px; height: 1px; background: rgba(246,244,248,0.14); }
     .title { position: absolute; left: 120px; top: 306px; width: 840px; color: #F6F4F8; font-size: 84px; font-weight: 800; line-height: 1.04; letter-spacing: -0.035em; }
     .title .dim { color: rgba(246,244,248,0.42); }
-    .poster { position: absolute; left: 286px; top: 500px; width: 508px; height: 620px; background: #FFFFFF; border-radius: 8px; box-shadow: 0 18px 34px rgba(0,0,0,0.22); }
-    .poster-empty { position: absolute; left: 330px; top: 546px; width: 420px; height: 528px; border: 2px dashed #D8D5DE; border-radius: 4px; }
-    .chip { position: absolute; min-width: 190px; padding: 14px 20px; background: #23212B; border: 1px solid #373442; border-radius: 12px; color: #F6F4F8; font-size: 30px; font-weight: 600; white-space: nowrap; }
-    .spinner-wrap { position: absolute; left: 490px; top: 1188px; width: 100px; height: 100px; }
-    .spinner { width: 100px; height: 100px; border: 8px solid rgba(246,244,248,0.16); border-top-color: #FFB35C; border-radius: 50%; }
+    .poster { position: absolute; left: 240px; top: 560px; width: 600px; height: 780px; background: #FFFFFF; border-radius: 10px; box-shadow: 0 24px 60px rgba(0,0,0,0.28); }
+    .poster-empty { position: absolute; left: 40px; top: 46px; width: 520px; height: 688px; border: 2px dashed #D8D5DE; border-radius: 4px; }
+    .chip { position: absolute; padding: 16px 22px; background: #23212B; border: 1px solid #373442; border-radius: 12px; color: #F6F4F8; font-size: 30px; font-weight: 600; white-space: nowrap; box-shadow: 0 12px 24px rgba(0,0,0,0.24); }
+    .spinner-wrap { position: absolute; left: 450px; top: 890px; width: 120px; height: 120px; }
+    .spinner { width: 120px; height: 120px; border: 9px solid rgba(246,244,248,0.16); border-top-color: #FFB35C; border-radius: 50%; }
   </style>
   <div id="root" data-composition-id="tension" data-width="1080" data-height="1920">
     <div class="stage" data-layout-ignore></div>
@@ -18,28 +18,31 @@
     <div class="rule" data-layout-ignore></div>
     <div id="ten-title-a" class="clip title" data-start="0" data-duration="3.4" data-track-index="0"><span id="ten-title-a-inner">The old way.</span></div>
     <div id="ten-title-b" class="clip title" data-start="3.4" data-duration="3.2" data-track-index="0"><span id="ten-title-b-inner">11 tabs.<br /><span class="dim">0 progress.</span></span></div>
-    <div id="ten-title-c" class="clip title" data-start="6.6" data-duration="2.9" data-track-index="0"><span id="ten-title-c-inner">A blank page.</span></div>
-    <div id="ten-poster" class="clip poster" data-start="0" data-duration="9.5" data-track-index="1"><div id="ten-poster-inner"></div><div class="poster-empty" data-layout-ignore></div></div>
-    <div id="chip-1" class="clip chip" data-start="0.5" data-duration="8.3" data-track-index="2" style="left:92px;top:520px;"><span class="chip-inner">logo_final_v7.png</span></div>
-    <div id="chip-2" class="clip chip" data-start="1.1" data-duration="7.7" data-track-index="2" style="left:700px;top:600px;"><span class="chip-inner">font.zip</span></div>
-    <div id="chip-3" class="clip chip" data-start="1.9" data-duration="6.9" data-track-index="2" style="left:96px;top:760px;"><span class="chip-inner">download.png</span></div>
-    <div id="chip-4" class="clip chip" data-start="2.7" data-duration="6.1" data-track-index="2" style="left:706px;top:900px;"><span class="chip-inner">photo (3).jpg</span></div>
-    <div id="chip-5" class="clip chip" data-start="3.5" data-duration="5.3" data-track-index="2" style="left:180px;top:1020px;"><span class="chip-inner">11 tabs open</span></div>
-    <div id="ten-spinner" class="clip spinner-wrap" data-start="0.8" data-duration="8.6" data-track-index="2"><div id="ten-spinner-inner" class="spinner"></div></div>
+    <div id="ten-title-c" class="clip title" data-start="6.6" data-duration="3.6" data-track-index="0"><span id="ten-title-c-inner">A blank page.</span></div>
+    <div id="ten-poster" class="clip poster" data-start="0" data-duration="10.667" data-track-index="1">
+      <div id="ten-poster-inner" style="width:100%;height:100%;"><div class="poster-empty" data-layout-ignore></div></div>
+    </div>
+    <div id="chip-1" class="clip chip" data-start="0.5" data-duration="8.6" data-track-index="2" style="left:96px;top:548px;"><span class="chip-inner">logo_final_v7.png</span></div>
+    <div id="chip-2" class="clip chip" data-start="1.1" data-duration="8.0" data-track-index="2" style="left:760px;top:640px;"><span class="chip-inner">font.zip</span></div>
+    <div id="chip-3" class="clip chip" data-start="1.9" data-duration="7.2" data-track-index="2" style="left:100px;top:900px;"><span class="chip-inner">download.png</span></div>
+    <div id="chip-4" class="clip chip" data-start="2.7" data-duration="6.4" data-track-index="2" style="left:748px;top:1040px;"><span class="chip-inner">photo (3).jpg</span></div>
+    <div id="chip-5" class="clip chip" data-start="3.5" data-duration="5.6" data-track-index="2" style="left:150px;top:1220px;"><span class="chip-inner">11 tabs open</span></div>
+    <div id="ten-spinner" class="clip spinner-wrap" data-start="0.8" data-duration="9.0" data-track-index="2"><div id="ten-spinner-inner" class="spinner"></div></div>
   </div>
   <script>
     window.__timelines = window.__timelines || {};
     const tl = gsap.timeline({ paused: true });
     tl.fromTo("#ten-title-a-inner", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.18, ease: "power4.out" }, 0);
-    tl.fromTo("#ten-poster-inner", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.4, ease: "expo.out" }, 0.2);
+    tl.fromTo("#ten-poster", { opacity: 0, y: 26, scale: 0.985 }, { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "expo.out" }, 0.2);
     tl.to("#ten-title-a-inner", { opacity: 0, filter: "blur(6px)", duration: 0.18, ease: "power3.in" }, 3.25);
     tl.fromTo("#ten-title-b-inner", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.18, ease: "power4.out" }, 3.4);
     tl.to("#ten-title-b-inner", { opacity: 0, filter: "blur(6px)", duration: 0.18, ease: "power3.in" }, 6.45);
     tl.fromTo("#ten-title-c-inner", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.18, ease: "power4.out" }, 6.6);
     tl.fromTo(["#chip-1 .chip-inner", "#chip-2 .chip-inner", "#chip-3 .chip-inner", "#chip-4 .chip-inner", "#chip-5 .chip-inner"], { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.16, ease: "back.out(1.4)", stagger: 0.09 }, 0.5);
-    tl.to(".chip-inner", { opacity: 0, duration: 0.4, ease: "power3.in", stagger: 0.05 }, 8.4);
+    tl.to(".chip-inner", { opacity: 0, duration: 0.4, ease: "power3.in", stagger: 0.05 }, 8.5);
     tl.fromTo("#ten-spinner-inner", { rotation: 0 }, { rotation: 720, duration: 4.2, ease: "none" }, 0.8);
-    tl.to("#ten-spinner-inner", { opacity: 0, duration: 0.5, ease: "power3.in" }, 8.5);
+    tl.to("#ten-spinner-inner", { opacity: 0, duration: 0.5, ease: "power3.in" }, 8.6);
+    tl.to("#ten-poster", { scale: 1.03, duration: 1.8, ease: "power2.inOut" }, 8.7);
     window.__timelines["tension"] = tl;
   </script>
 </template>

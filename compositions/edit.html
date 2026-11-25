@@ -1,38 +1,44 @@
 <template>
   <style>
-    #root { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; background: #FFFFFF; font-family: "Outfit", sans-serif; }
-    .stage { position: absolute; inset: 0; background: #FFFFFF; }
-    .rule { position: absolute; left: 120px; right: 120px; top: 280px; height: 1px; background: #E6E3EA; }
-    .title { position: absolute; left: 120px; top: 306px; width: 840px; color: #111018; font-size: 88px; font-weight: 800; letter-spacing: -0.035em; }
-    .accent { color: #7D2AE8; }
-    .card { position: absolute; left: 120px; top: 470px; width: 840px; height: 740px; background: #F5F3F7; border: 1px solid #E6E3EA; border-radius: 20px; overflow: hidden; box-shadow: 0 18px 34px rgba(17,16,24,0.18); }
-    .bar { height: 56px; background: #FFFFFF; border-bottom: 1px solid #E6E3EA; display: flex; align-items: center; padding: 0 22px; gap: 10px; }
-    .dot { width: 12px; height: 12px; border-radius: 6px; background: #CBC7D2; }
-    .url { margin-left: 20px; color: #6B6675; font-size: 24px; font-weight: 600; }
-    .sidebar { position: absolute; left: 0; top: 56px; bottom: 0; width: 116px; background: #FFFFFF; border-right: 1px solid #E6E3EA; overflow: hidden; }
-    .sidebar img { width: 260px; height: 740px; object-fit: cover; object-position: 0 0; opacity: 0.85; }
-    .canvas { position: absolute; left: 154px; top: 96px; width: 640px; height: 570px; background: #111018; overflow: hidden; border-radius: 4px; box-shadow: 0 10px 24px rgba(17,16,24,0.18); }
-    .canvas-photo { width: 640px; height: 570px; object-fit: cover; object-position: 50% 42%; }
-    .scrim { position: absolute; inset: 0; background: rgba(10,8,14,0.52); }
-    .headline { position: absolute; left: 44px; top: 168px; width: 560px; color: #FFFFFF; font-size: 70px; font-weight: 800; line-height: 0.98; letter-spacing: -0.04em; }
-    .subline { position: absolute; left: 44px; top: 386px; width: 560px; color: #FFFFFF; font-size: 36px; font-weight: 700; letter-spacing: 0.02em; }
-    .meta { position: absolute; left: 44px; top: 486px; width: 560px; color: rgba(255,255,255,0.82); font-size: 26px; font-weight: 600; letter-spacing: 0.12em; }
-    .cursor { position: absolute; left: 0; top: 0; width: 64px; height: 64px; z-index: 8; filter: drop-shadow(0 2px 3px rgba(0,0,0,0.3)); }
+    #root { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: hidden; background: #F5F3F7; font-family: "Outfit", sans-serif; }
+    .stage { position: absolute; inset: 0; background: #F5F3F7; }
+    .rule { position: absolute; left: 120px; right: 120px; top: 280px; height: 1px; background: #DDD9E3; }
+    .title { position: absolute; left: 120px; top: 306px; width: 840px; color: #111018; font-size: 84px; font-weight: 800; line-height: 1.04; letter-spacing: -0.035em; }
+    .poster { position: absolute; left: 80px; top: 500px; width: 920px; height: 1140px; background: #111018; border-radius: 12px; overflow: hidden; box-shadow: 0 24px 60px rgba(17,16,24,0.32); }
+    #edit-poster-inner { position: absolute; inset: 0; }
+    .poster-photo { width: 920px; height: 1140px; object-fit: cover; object-position: 50% 44%; }
+    .scrim { position: absolute; inset: 0; background: rgba(10,8,14,0.6); }
+    .headline { position: absolute; left: 60px; top: 206px; width: 800px; color: #FFFFFF; font-size: 132px; font-weight: 800; line-height: 0.92; letter-spacing: -0.045em; clip-path: inset(0 100% 0 0); }
+    .subline { position: absolute; left: 60px; top: 512px; width: 800px; color: #FFFFFF; font-size: 50px; font-weight: 700; letter-spacing: 0.02em; clip-path: inset(0 100% 0 0); }
+    #edit-accent { color: #FFFFFF; border-radius: 4px; }
+    .meta { position: absolute; left: 60px; top: 704px; width: 800px; color: rgba(255,255,255,0.84); font-size: 32px; font-weight: 600; letter-spacing: 0.16em; }
+    .credit { position: absolute; left: 60px; top: 1054px; width: 800px; color: rgba(255,255,255,0.7); font-size: 24px; font-weight: 500; letter-spacing: 0.02em; }
+    .toolbar { position: absolute; left: 60px; top: 608px; width: 650px; height: 88px; background: #FFFFFF; border-radius: 12px; box-shadow: 0 18px 34px rgba(0,0,0,0.26); display: flex; align-items: center; padding: 0 22px; gap: 14px; opacity: 0; }
+    .tb-font { color: #111018; font-size: 25px; font-weight: 700; }
+    .tb-div { width: 1px; height: 28px; background: #E6E3EA; }
+    .tb-size { color: #111018; font-size: 25px; font-weight: 600; width: 44px; }
+    .tb-b { color: #111018; font-size: 27px; font-weight: 800; }
+    .tb-i { color: #111018; font-size: 27px; font-weight: 700; font-style: italic; }
+    .tb-u { color: #111018; font-size: 27px; font-weight: 700; text-decoration: underline; }
+    .swatches { display: flex; align-items: center; gap: 12px; margin-left: 8px; }
+    .sw { width: 32px; height: 32px; border-radius: 16px; border: 1px solid #D8D5DE; display: block; }
+    .cursor { position: absolute; left: 0; top: 0; width: 64px; height: 64px; z-index: 9; opacity: 0; filter: drop-shadow(0 2px 3px rgba(0,0,0,0.34)); }
   </style>
   <div id="root" data-composition-id="edit" data-width="1080" data-height="1920">
     <div class="stage" data-layout-ignore></div>
     <div class="rule" data-layout-ignore></div>
     <div id="edit-title" class="clip title" data-start="0" data-duration="4.4" data-track-index="0"><span id="edit-title-inner">Make it yours.</span></div>
-    <div id="edit-card" class="clip card" data-start="0" data-duration="13" data-track-index="1">
-      <div id="edit-card-inner">
-        <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="url">canva.com</span></div>
-        <div class="sidebar"><img src="assets/ui/features-full.jpg" alt="Canva tools panel" /></div>
-        <div id="edit-canvas" class="canvas">
-          <img class="canvas-photo" src="assets/ui/night-market.jpg" alt="Night market photograph by Daniel Case" />
-          <div class="scrim" data-layout-ignore></div>
-          <div id="edit-headline" class="headline">MIDNIGHT<br />MARKET</div>
-          <div id="edit-subline" class="subline">LAUNCH <span class="accent">TOMORROW</span></div>
-          <div id="edit-meta" class="meta">SAT · 10 AM · DOWNTOWN</div>
+    <div id="edit-poster" class="clip poster" data-start="0" data-duration="12.444" data-track-index="1">
+      <div id="edit-poster-inner">
+        <img class="poster-photo" src="assets/ui/night-market.jpg" alt="Night market photograph by Daniel Case" />
+        <div class="scrim" data-layout-ignore></div>
+        <div id="edit-headline" class="headline">MIDNIGHT<br />MARKET</div>
+        <div id="edit-subline" class="subline">LAUNCH <span id="edit-accent">TOMORROW</span></div>
+        <div id="edit-meta" class="meta">SAT · 10 AM · DOWNTOWN</div>
+        <div class="credit">Photo: Daniel Case / CC BY-SA 3.0</div>
+        <div id="edit-toolbar" class="toolbar" data-layout-ignore>
+          <span class="tb-font">Outfit</span><span class="tb-div"></span><span class="tb-size">132</span><span class="tb-b">B</span><span class="tb-i">I</span><span class="tb-u">U</span>
+          <span class="swatches"><span class="sw" style="background:#FFFFFF;"></span><span id="sw-lav" class="sw" style="background:#C9A6FF;"></span><span class="sw" style="background:#FFB35C;"></span><span class="sw" style="background:#111018;"></span></span>
         </div>
         <svg id="edit-cursor" class="cursor" viewBox="0 0 64 64" aria-hidden="true"><path d="M8 4 L8 50 L21 37 L30 57 L39 53 L30 34 L48 34 Z" fill="#FFFFFF" stroke="#111018" stroke-width="3" stroke-linejoin="round" /></svg>
       </div>
@@ -41,20 +47,27 @@
   <script>
     window.__timelines = window.__timelines || {};
     const tl = gsap.timeline({ paused: true });
-    tl.fromTo("#edit-card-inner", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.45, ease: "expo.out" }, 0);
-    tl.fromTo("#edit-title-inner", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.22, ease: "power4.out" }, 0.1);
-    tl.to("#edit-title-inner", { opacity: 0, filter: "blur(6px)", duration: 0.2, ease: "power3.in" }, 4.1);
-    tl.fromTo("#edit-canvas", { opacity: 0, x: 90 }, { opacity: 1, x: 0, duration: 0.6, ease: "power4.out" }, 0.5);
-    tl.fromTo("#edit-cursor", { x: 760, y: 640, opacity: 0 }, { x: 760, y: 640, opacity: 1, duration: 0.25, ease: "power4.out" }, 2.0);
-    tl.to("#edit-cursor", { x: 300, y: 250, duration: 0.6, ease: "power2.inOut" }, 2.4);
-    tl.to("#edit-cursor", { scale: 0.86, duration: 0.12, ease: "back.out(1.4)" }, 3.0);
-    tl.fromTo("#edit-headline", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 1.2, ease: "steps(14)" }, 3.1);
-    tl.to("#edit-cursor", { x: 330, y: 470, duration: 0.7, ease: "power2.inOut" }, 4.7);
-    tl.to("#edit-cursor", { scale: 0.86, duration: 0.12, ease: "back.out(1.4)" }, 5.4);
-    tl.fromTo("#edit-subline", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 1.1, ease: "steps(15)" }, 5.5);
-    tl.fromTo("#edit-meta", { opacity: 0, y: 14 }, { opacity: 0.82, y: 0, duration: 0.4, ease: "power4.out" }, 8.2);
-    tl.to("#edit-cursor", { x: 520, y: 610, duration: 0.6, ease: "power2.inOut" }, 9.2);
-    tl.to("#edit-card-inner", { scale: 1.04, filter: "blur(5px)", duration: 0.5, ease: "power3.in" }, 12.2);
+    tl.fromTo("#edit-poster-inner", { opacity: 0, scale: 1.02 }, { opacity: 1, scale: 1, duration: 0.55, ease: "expo.out" }, 0);
+    tl.fromTo("#edit-title-inner", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.22, ease: "power4.out" }, 0.15);
+    tl.to("#edit-title-inner", { opacity: 0, filter: "blur(6px)", duration: 0.2, ease: "power3.in" }, 3.4);
+    tl.fromTo("#edit-cursor", { x: 700, y: 900, opacity: 0 }, { x: 700, y: 900, opacity: 1, duration: 0.25, ease: "power4.out" }, 0.7);
+    tl.to("#edit-cursor", { x: 380, y: 300, duration: 0.7, ease: "power2.inOut" }, 1.2);
+    tl.to("#edit-cursor", { scale: 0.86, duration: 0.08, yoyo: true, repeat: 1, ease: "power2.out" }, 1.9);
+    tl.fromTo("#edit-headline", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 1.2, ease: "steps(14)" }, 1.95);
+    tl.to("#edit-cursor", { x: 330, y: 548, duration: 0.65, ease: "power2.inOut" }, 3.9);
+    tl.to("#edit-cursor", { scale: 0.86, duration: 0.08, yoyo: true, repeat: 1, ease: "power2.out" }, 4.55);
+    tl.fromTo("#edit-subline", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 1.1, ease: "steps(15)" }, 4.65);
+    tl.fromTo("#edit-toolbar", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.24, ease: "power4.out" }, 5.5);
+    tl.to("#edit-cursor", { x: 452, y: 650, duration: 0.55, ease: "power2.inOut" }, 5.65);
+    tl.to("#sw-lav", { scale: 1.14, boxShadow: "0 0 0 3px #7D2AE8", duration: 0.15, ease: "power2.out" }, 6.3);
+    tl.to("#edit-cursor", { scale: 0.86, duration: 0.08, yoyo: true, repeat: 1, ease: "power2.out" }, 6.4);
+    tl.to("#edit-accent", { color: "#C9A6FF", backgroundColor: "rgba(201,166,255,0.22)", boxShadow: "0 0 0 2px #C9A6FF", duration: 0.18, ease: "power2.out" }, 6.45);
+    tl.fromTo("#edit-meta", { opacity: 0, y: 12 }, { opacity: 0.84, y: 0, duration: 0.3, ease: "power4.out" }, 7.5);
+    tl.to("#edit-accent", { backgroundColor: "rgba(201,166,255,0)", boxShadow: "0 0 0 0 rgba(201,166,255,0)", duration: 0.3, ease: "power2.out" }, 7.95);
+    tl.to("#edit-toolbar", { opacity: 0, y: -8, duration: 0.25, ease: "power3.in" }, 8.8);
+    tl.to("#edit-cursor", { opacity: 0, duration: 0.25, ease: "power3.in" }, 9.2);
+    tl.to("#edit-poster-inner", { scale: 1.06, duration: 2.0, ease: "power2.inOut" }, 8.6);
+    tl.to("#edit-poster-inner", { scale: 1.1, filter: "blur(5px)", duration: 0.5, ease: "power3.in" }, 11.6);
     window.__timelines["edit"] = tl;
   </script>
 </template>
